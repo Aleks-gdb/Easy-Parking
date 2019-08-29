@@ -1,7 +1,9 @@
 Backlog for this sprint
 
 Primary market research - incomplete
-  Create survey - incomplete
+  Create survey - complete
   Analyze surveys and results - incomplete
 
 Secondary research - incomplete
+
+Create business documents - incomplete
