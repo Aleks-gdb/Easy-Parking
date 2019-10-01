@@ -3,4 +3,4 @@ Backlog for this sprint
 Update Business Requirement Documents - In Progress
 Update the Sprint Board - Complete
 Update the Management Plan Document - In Progress
-Create the Sprint #1 PowerPoint - In Progress
+Product Requirement Document - In Progress
