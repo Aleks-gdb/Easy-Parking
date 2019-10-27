@@ -117,8 +117,12 @@ dataset = [[2.771244718, 1.784783929, 0],
            [10.12493903, 3.234550982, 1],
            [6.642287351, 3.319983761, 1]]
 
+tree = build_tree(dataset, 1, 1)
+print_tree(tree)
+
 #  predict with a stump
 stump = {'index': 0, 'right': 1, 'value': 6.642287351, 'left': 0}
 for row in dataset:
     prediction = predict(stump, row)
     print('Expected=%d, Got=%d' % (row[-1], prediction))
+
