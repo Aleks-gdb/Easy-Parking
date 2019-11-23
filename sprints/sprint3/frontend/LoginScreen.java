@@ -75,6 +75,12 @@ public class LoginScreen extends Application //implements Observer
             public void handle(ActionEvent e) 
             {
                 Stage stage = (Stage) buttonClose.getScene().getWindow();
+                String[] data = new String[]{"close"};
+                try{
+                Connect main = new Connect(data, true);
+                }catch(Exception ex){
+                    System.out.println("Oops!");
+                }
                 stage.close();
             }
         });
@@ -156,13 +162,30 @@ public class LoginScreen extends Application //implements Observer
         {
             public void handle(ActionEvent e) 
             {
-                if (username.getText().equals("hello")) {
-                    message.setText("That username is taken!");
+                if(username.getText().equals("")){
+                    message.setText("You must provide a username!");
                     message.setTextFill(Color.rgb(210, 39, 30));
-                } else {
-                    message.setText("");
-                    String[] data = new String[]{username.getText(), password.getText()};
-                    Connect main = new Connect(data);
+                }
+                else if(password.getText().equals("")){
+                    message.setText("You must provide a password!");
+                    message.setTextFill(Color.rgb(210, 39, 30));
+                }
+                else{
+                    String[] data = new String[]{username.getText()};
+                    try{
+                    Connect check = new Connect(data, false);
+                    if (check.taken) {
+                        message.setText("That username is taken!");
+                        message.setTextFill(Color.rgb(210, 39, 30));
+                    } else {
+                        message.setText("");
+                        String[] register = new String[]{username.getText(), password.getText()};
+                        Connect main = new Connect(register, true);
+                    }
+                    }catch(Exception c){
+                        message.setText("Something went wrong");
+                        message.setTextFill(Color.rgb(210, 39, 30));
+                    }
                 }
             }
         });
