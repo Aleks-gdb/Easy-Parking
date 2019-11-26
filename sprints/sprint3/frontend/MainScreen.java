@@ -1,3 +1,4 @@
+//MainScreen.java post-login user page
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;

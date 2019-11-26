@@ -1,3 +1,4 @@
+//LoginScreen.java to handle login
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
