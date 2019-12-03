@@ -145,7 +145,7 @@ public class LoginScreen extends Application //implements Observer
             {
                 if (password.getText().equals("hello")) {
                     message.setText("");
-                    MainScreen main = new MainScreen();
+                    HomeScreen main = new HomeScreen();
                     try{
                         main.start(p);}
                         catch(Exception ex){
