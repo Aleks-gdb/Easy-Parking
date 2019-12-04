@@ -36,10 +36,10 @@
                </font>
             </Button>
             <TextField layoutX="536.0" layoutY="6.0" prefHeight="41.0" prefWidth="272.0" promptText="Search" stylesheets="@Style.css" />
-            <SplitMenuButton layoutX="951.0" layoutY="6.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="223.0" stylesheets="@Style.css" text="Username" textFill="#170303">
+            <SplitMenuButton fx:id="splitMenu" layoutX="951.0" layoutY="6.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="223.0" stylesheets="@Style.css" text="Username" textFill="#170303">
               <items>
                   <MenuItem mnemonicParsing="false" text="Account Info" />
-                <MenuItem mnemonicParsing="false" text="Log Out" onAction="#logOut"/>
+                <MenuItem fx:id="logOutItem" mnemonicParsing="false" text="Log Out" onAction="#logOut"/>
               </items>
             </SplitMenuButton>
             <Button layoutY="47.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="241.0" stylesheets="@Style.css" text="Browse">

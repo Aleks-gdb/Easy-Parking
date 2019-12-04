@@ -1,3 +1,4 @@
+//HomeScreen.java post-login user homepage
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

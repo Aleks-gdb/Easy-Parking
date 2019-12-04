@@ -30,7 +30,6 @@ public class LoginScreen extends Application //implements Observer
         primaryStage.setTitle("Instrument Recognition Software"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage�
-
     }
 
     private static double xOffset = 0;
@@ -143,6 +142,7 @@ public class LoginScreen extends Application //implements Observer
         {
             public void handle(ActionEvent e) 
             {
+                e.consume();
                 if (password.getText().equals("hello")) {
                     message.setText("");
                     HomeScreen main = new HomeScreen();
@@ -163,6 +163,7 @@ public class LoginScreen extends Application //implements Observer
         {
             public void handle(ActionEvent e) 
             {
+                e.consume();
                 if(username.getText().equals("")){
                     message.setText("You must provide a username!");
                     message.setTextFill(Color.rgb(210, 39, 30));
