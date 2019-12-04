@@ -75,7 +75,7 @@ public class LoginScreen extends Application //implements Observer
             public void handle(ActionEvent e) 
             {
                 Stage stage = (Stage) buttonClose.getScene().getWindow();
-                String[] data = new String[]{"close"};
+                String data = "close";
                 try{
                 Connect main = new Connect(data, true);
                 }catch(Exception ex){
@@ -143,27 +143,6 @@ public class LoginScreen extends Application //implements Observer
             public void handle(ActionEvent e) 
             {
                 e.consume();
-                if (password.getText().equals("hello")) {
-                    message.setText("");
-                    HomeScreen main = new HomeScreen();
-                    try{
-                        main.start(p);}
-                        catch(Exception ex){
-                            ex.printStackTrace();
-                        }
-                } else {
-                    message.setText("Your password is incorrect!");
-                    message.setTextFill(Color.rgb(210, 39, 30));
-                }
-                password.clear();
-            }
-        });
-
-        register.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            public void handle(ActionEvent e) 
-            {
-                e.consume();
                 if(username.getText().equals("")){
                     message.setText("You must provide a username!");
                     message.setTextFill(Color.rgb(210, 39, 30));
@@ -173,22 +152,58 @@ public class LoginScreen extends Application //implements Observer
                     message.setTextFill(Color.rgb(210, 39, 30));
                 }
                 else{
-                    String[] data = new String[]{username.getText()};
+                    String user = username.getText() + " " + password.getText() + " login" ;
                     try{
-                    Connect check = new Connect(data, false);
-                    if (check.taken) {
-                        message.setText("That username is taken!");
-                        message.setTextFill(Color.rgb(210, 39, 30));
-                    } else {
+                    Connect validation = new Connect(user, true);
+                    if (validation.exists) {
                         message.setText("");
-                        String[] register = new String[]{username.getText(), password.getText()};
-                        Connect main = new Connect(register, true);
+                        HomeScreen main = new HomeScreen();
+                        try{
+                            main.start(p);}
+                        catch(Exception ex){
+                            ex.printStackTrace();
+                        }
+                    }else {
+                        message.setText("Username or password incorrect!");
+                        message.setTextFill(Color.rgb(210, 39, 30));
                     }
                     }catch(Exception c){
                         message.setText("Something went wrong");
                         message.setTextFill(Color.rgb(210, 39, 30));
                     }
                 }
+                password.clear();
+            }
+        });
+        register.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            public void handle(ActionEvent e) 
+            {
+                if(username.getText().equals("")){
+                    message.setText("You must provide a username!");
+                    message.setTextFill(Color.rgb(210, 39, 30));
+                }
+                else if(password.getText().equals("")){
+                    message.setText("You must provide a password!");
+                    message.setTextFill(Color.rgb(210, 39, 30));
+                }
+                else{
+                    String user = username.getText() + " " + password.getText() + " register";
+                    try{
+                    Connect validation = new Connect(user, false);
+                    if (validation.taken) {
+                        message.setText("That username is taken!");
+                        message.setTextFill(Color.rgb(210, 39, 30));
+                    }else {
+                        message.setText(username.getText() + " has been registered!");
+                        message.setTextFill(Color.rgb(0, 255, 0));
+                    }
+                    }catch(Exception c){
+                        message.setText("Something went wrong");
+                        message.setTextFill(Color.rgb(210, 39, 30));
+                    }
+                }
+                e.consume();
             }
         });
 
