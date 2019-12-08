@@ -7,7 +7,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
 import os
 
-def mlearning(num):
+def mLearning(num):
    (X_train, y_train), (X_test, y_test) = mnist.load_data()
    fig = plt.figure()
    for i in range(9):
