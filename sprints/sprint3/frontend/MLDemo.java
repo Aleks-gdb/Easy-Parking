@@ -12,11 +12,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 
-public class LoginScreen extends Application //implements Observer
+public class MLDemo extends Application //implements Observer
 {
     public void start(Stage primaryStage) throws Exception
     {
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         
         // Create a scene and place it in the stage
         Scene scene = new Scene(window(primaryStage), 1180, 700);
@@ -132,98 +132,66 @@ public class LoginScreen extends Application //implements Observer
 
 
         //Defining the Username text field for login
-        final TextField username = new TextField();
-        Text textName = new Text ("Name:");
+        final TextField iterNum = new TextField();
+        Text textName = new Text ("Number of iterations:");
         textName.setId("text");
-        //Defining the Password text field for login
-        final PasswordField password = new PasswordField();
-        Text textPassword = new Text ("Password:");
-        textPassword.setId("text");
         //Defining the Submit button
-        Button login = new Button("Login");
-        Hyperlink register = new Hyperlink("Register!");
-        TextFlow prompt = new TextFlow( new Text("Don't have an account? "), register);
-        prompt.setId("prompt");
+        Button run = new Button("Run!");
+        Button logOut = new Button("Log out");
         final Label message = new Label("");
-        login.setOnAction(new EventHandler<ActionEvent>() 
+        final Label warning = new Label("Warning: Average run time for one iteration is 75s.");
+        warning.setTextFill(Color.rgb(210, 39, 30));
+        run.setOnAction(new EventHandler<ActionEvent>() 
         {
             public void handle(ActionEvent e) 
             {
                 e.consume();
-                if(username.getText().equals("")){
-                    message.setText("You must provide a username!");
+                if(iterNum.getText().equals("")){
+                    message.setText("You must provide an iteration number!");
                     message.setTextFill(Color.rgb(210, 39, 30));
                 }
-                else if(password.getText().equals("")){
-                    message.setText("You must provide a password!");
+                else if(Integer.parseInt(iterNum.getText()) < 1){
+                    message.setText("The number must be >= 1!");
                     message.setTextFill(Color.rgb(210, 39, 30));
                 }
                 else{
-                    String user = username.getText() + " " + password.getText() + " login" ;
                     try{
-                    Connect validation = new Connect(user, true);
-                    if (validation.exists) {
-                        message.setText("");
-                        //HomeScreen main = new HomeScreen();
-                        MLDemo main = new MLDemo();
-                        try{
-                            main.start(p);}
-                        catch(Exception ex){
-                            ex.printStackTrace();
-                        }
-                    }else {
-                        message.setText("Username or password incorrect!");
-                        message.setTextFill(Color.rgb(210, 39, 30));
-                    }
+                    message.setText("");
+                    Connect send = new Connect(iterNum.getText());
                     }catch(Exception c){
                         message.setText("Something went wrong");
                         message.setTextFill(Color.rgb(210, 39, 30));
                     }
                 }
-                password.clear();
-            }
-        });
-        register.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            public void handle(ActionEvent e) 
-            {
-                if(username.getText().equals("")){
-                    message.setText("You must provide a username!");
-                    message.setTextFill(Color.rgb(210, 39, 30));
-                }
-                else if(password.getText().equals("")){
-                    message.setText("You must provide a password!");
-                    message.setTextFill(Color.rgb(210, 39, 30));
-                }
-                else{
-                    String user = username.getText() + " " + password.getText() + " register";
-                    try{
-                    Connect validation = new Connect(user, false);
-                    if (validation.taken) {
-                        message.setText("That username is taken!");
-                        message.setTextFill(Color.rgb(210, 39, 30));
-                    }else {
-                        message.setText(username.getText() + " has been registered!");
-                        message.setTextFill(Color.rgb(0, 255, 0));
-                    }
-                    }catch(Exception c){
-                        message.setText("Something went wrong");
-                        message.setTextFill(Color.rgb(210, 39, 30));
-                    }
-                }
-                e.consume();
+                iterNum.clear();
             }
         });
 
+        logOut.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event){
+                event.consume();
+                Stage nstage = new Stage();
+                LoginScreen login = new LoginScreen();
+                try{
+                    login.start(nstage);
+                    p.close();
+                }
+                catch(Exception ex){
+                        ex.printStackTrace();
+                }
+            }
+        });
+ 
         //Add fields to the grid
         grid.add(textName, 0, 0);
-        grid.add(username, 1, 0);
-        grid.add(textPassword, 0, 1);
-        grid.add(password, 1, 1);
-        grid.add(login, 1, 3);
-        grid.add(prompt, 1, 4);
-        grid.add(message, 1, 5);
-        GridPane.setHalignment(login, HPos.CENTER);
+        grid.add(iterNum, 1, 0);
+        grid.add(warning, 0, 1, 2, 1);
+        grid.add(run, 2, 0);
+        grid.add(logOut, 1, 5);
+        grid.add(message, 3, 0);
+        GridPane.setHalignment(run, HPos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(10);
         return grid;
     }
     public static void main(String[] args) 
