@@ -1,26 +1,22 @@
+//LoginScreen.java to handle login
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.*;
-import java.util.*;
-import java.io.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.application.Platform;
 import javafx.scene.text.*; 
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.scene.effect.*;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 
-public class LoginScreen extends Application //implements Observer
+public class MLDemo extends Application //implements Observer
 {
     public void start(Stage primaryStage) throws Exception
     {
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         
         // Create a scene and place it in the stage
         Scene scene = new Scene(window(primaryStage), 1180, 700);
@@ -28,7 +24,6 @@ public class LoginScreen extends Application //implements Observer
         primaryStage.setTitle("Instrument Recognition Software"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage�
-
     }
 
     private static double xOffset = 0;
@@ -66,6 +61,9 @@ public class LoginScreen extends Application //implements Observer
         Button buttonClose = new Button("X");
         buttonClose.setId("windowNav");
 
+        Button buttonMax = new Button("[]");
+        buttonMax.setId("windowNav");
+
         Button buttonMinimize = new Button("_");
         buttonMinimize.setId("windowNav");
 
@@ -74,7 +72,22 @@ public class LoginScreen extends Application //implements Observer
             public void handle(ActionEvent e) 
             {
                 Stage stage = (Stage) buttonClose.getScene().getWindow();
+                String data = "close";
+                try{
+                Connect main = new Connect(data);
+                }catch(Exception ex){
+                    System.out.println("Oops!");
+                }
                 stage.close();
+            }
+        });
+
+        buttonMax.setOnAction(new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent e)
+            {
+                Stage stage = (Stage) buttonMax.getScene().getWindow();
+                stage.setFullScreen(true);
             }
         });
 
@@ -86,8 +99,9 @@ public class LoginScreen extends Application //implements Observer
                 stage.setIconified(true);
             }
         });
-        StackPane.setMargin(buttonMinimize, new Insets(0, 36, 0, 0));
-        stack.getChildren().addAll(buttonMinimize, buttonClose);
+        StackPane.setMargin(buttonMinimize, new Insets(0, 72, 0, 0));
+        StackPane.setMargin(buttonMax, new Insets(0, 36, 0, 0));
+        stack.getChildren().addAll(buttonMinimize,buttonMax, buttonClose);
         stack.setAlignment(Pos.TOP_RIGHT);
 
         h.getChildren().add(stack);            // Add to HBox from Example 1-2
@@ -118,74 +132,72 @@ public class LoginScreen extends Application //implements Observer
 
 
         //Defining the Username text field for login
-        final TextField username = new TextField();
-        Text textName = new Text ("Name:");
+        final TextField iterNum = new TextField();
+        Text textName = new Text ("Number of iterations:");
         textName.setId("text");
-        //Defining the Password text field for login
-        final PasswordField password = new PasswordField();
-        Text textPassword = new Text ("Password:");
-        textPassword.setId("text");
         //Defining the Submit button
-        Button login = new Button("Login");
-        Hyperlink register = new Hyperlink("Register!");
-        TextFlow prompt = new TextFlow( new Text("Don't have an account? "), register);
-        prompt.setId("prompt");
+        Button run = new Button("Run!");
+        Button logOut = new Button("Log out");
         final Label message = new Label("");
-        login.setOnAction(new EventHandler<ActionEvent>() 
+        final Label warning = new Label("Warning: Average run time for one iteration is 75s.");
+        warning.setTextFill(Color.rgb(210, 39, 30));
+        run.setOnAction(new EventHandler<ActionEvent>() 
         {
             public void handle(ActionEvent e) 
             {
-                if (password.getText().equals("hello")) {
-                    message.setText("");
-                    MainScreen main = new MainScreen();
-                    try{
-                        main.start(p);}
-                        catch(Exception ex){
-                            ex.printStackTrace();
-                        }
-                } else {
-                    message.setText("Your password is incorrect!");
+                e.consume();
+                if(iterNum.getText().equals("")){
+                    message.setText("You must provide an iteration number!");
                     message.setTextFill(Color.rgb(210, 39, 30));
                 }
-                password.clear();
-            }
-        });
-
-        register.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            public void handle(ActionEvent e) 
-            {
-                if (username.getText().equals("hello")) {
-                    message.setText("That username is taken!");
+                else if(Integer.parseInt(iterNum.getText()) < 1){
+                    message.setText("The number must be >= 1!");
                     message.setTextFill(Color.rgb(210, 39, 30));
-                } else {
-                    message.setText("");
-                    MainScreen main = new MainScreen();
+                }
+                else{
                     try{
-                        main.start(p);}
-                        catch(Exception ex){
-                            ex.printStackTrace();
+                    message.setText("");
+                    Connect send = new Connect(iterNum.getText());
+                    }catch(Exception c){
+                        message.setText("Something went wrong");
+                        message.setTextFill(Color.rgb(210, 39, 30));
                     }
                 }
+                iterNum.clear();
             }
         });
 
+        logOut.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event){
+                event.consume();
+                Stage nstage = new Stage();
+                LoginScreen login = new LoginScreen();
+                try{
+                    login.start(nstage);
+                    p.close();
+                }
+                catch(Exception ex){
+                        ex.printStackTrace();
+                }
+            }
+        });
+ 
         //Add fields to the grid
         grid.add(textName, 0, 0);
-        grid.add(username, 1, 0);
-        grid.add(textPassword, 0, 1);
-        grid.add(password, 1, 1);
-        grid.add(login, 1, 3);
-        grid.add(prompt, 1, 4);
-        grid.add(message, 1, 5);
-        GridPane.setHalignment(login, HPos.CENTER);
+        grid.add(iterNum, 1, 0);
+        grid.add(warning, 0, 1, 2, 1);
+        grid.add(run, 2, 0);
+        grid.add(logOut, 1, 5);
+        grid.add(message, 3, 0);
+        GridPane.setHalignment(run, HPos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(10);
         return grid;
     }
     public static void main(String[] args) 
     {
 
         Application.launch(args);
-       
     }
     
 }

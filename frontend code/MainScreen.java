@@ -1,19 +1,15 @@
+//NO LONGER USED
+//MainScreen.java post-login user page
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.*;
-import java.util.*;
-import java.io.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.application.Platform;
 import javafx.scene.text.Text; 
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.scene.effect.*;
-import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 
 public class MainScreen extends Application //implements Observer
