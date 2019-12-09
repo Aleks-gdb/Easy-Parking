@@ -1,1 +1,15 @@
 *.class
+backend code/Server.spec
+backend code/build/Server/xref-Server.html
+backend code/build/Server/warn-Server.txt
+backend code/build/Server/Tree-01.toc
+backend code/build/Server/Tree-00.toc
+backend code/build/Server/Server.exe.manifest
+backend code/build/Server/PYZ-00.toc
+backend code/build/Server/PYZ-00.pyz
+backend code/build/Server/PKG-00.toc
+backend code/build/Server/PKG-00.pkg
+backend code/build/Server/EXE-00.toc
+backend code/build/Server/base_library.zip
+backend code/build/Server/Analysis-00.toc
+backend code/__pycache__/Server.cpython-37.pyc
