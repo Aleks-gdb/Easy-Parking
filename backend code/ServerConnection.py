@@ -3,7 +3,8 @@ import pymongo
 import socket
 import pprint
 
-client = pymongo.MongoClient("mongodb+srv://dbTest:dbTestPass@cluster0-6dhsl.mongodb.net/test?retryWrites=true&w=majority")
+#Replaced with fake database link for security reasons
+client = pymongo.MongoClient("mongodb+srv://<databaseinfo>/test?retryWrites=true&w=majority")
 db = client.test_database
 collection = db.test_collection
 
