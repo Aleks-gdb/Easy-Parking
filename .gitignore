@@ -14,3 +14,4 @@ backend code/build/Server/base_library.zip
 backend code/build/Server/Analysis-00.toc
 backend code/__pycache__/Server.cpython-37.pyc
 *.pyc
+.vscode/settings.json
