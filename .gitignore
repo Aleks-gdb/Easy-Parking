@@ -15,3 +15,4 @@ sprints/sprint3/backend/Server.spec
 *.mf
 *.java~
 sprints/sprint3/backend/tensorflow/
+sprints/sprint3/backend/dist/Server.exe
