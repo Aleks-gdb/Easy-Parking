@@ -16,3 +16,4 @@ sprints/sprint3/backend/Server.spec
 *.java~
 sprints/sprint3/backend/tensorflow/
 sprints/sprint3/backend/dist/Server.exe
+.vscode/settings.json
