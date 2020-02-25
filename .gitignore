@@ -2,6 +2,8 @@
 sprints/sprint2/backend
 sprints/sprint3/backend/ServerConnection.py
 sprints/sprint3/backend/__pycache__
+sprints/sprint5/backend/ServerConnection.py
+sprints/sprint5/frontend/Connect.java
 Connect.java
 *.class
 *.toc
