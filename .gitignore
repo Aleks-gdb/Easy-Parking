@@ -19,3 +19,5 @@ sprints/sprint3/backend/Server.spec
 sprints/sprint3/backend/tensorflow/
 sprints/sprint3/backend/dist/Server.exe
 .vscode/settings.json
+sprints/sprint6/backend/ServerConnection.py
+sprints/sprint6/backend/__pycache__/ServerConnection.cpython-38.pyc
