@@ -9,10 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.stage.Stage?>
 
-<Stage fx:id="mainStage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <scene>
-        <Scene>
-            <AnchorPane onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="624.0">
+<AnchorPane prefHeight="624.0" fx:id="mainStage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeScreenControls">
             <children>
                <BorderPane>
                   <top>
@@ -37,7 +34,5 @@
                      </HBox>
                   </top>
                </BorderPane>
-            </children></AnchorPane>
-        </Scene>
-    </scene>
-</Stage>
+            </children>
+            </AnchorPane>
