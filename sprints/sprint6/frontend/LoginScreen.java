@@ -11,21 +11,22 @@ import javafx.scene.text.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 public class LoginScreen extends Application //implements Observer
 {
+    @Override
     public void start(Stage primaryStage) throws Exception
     {
+        Scene root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
+		root.getStylesheets().add("Style.css");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         
-        // Create a scene and place it in the stage
-        Scene scene = new Scene(window(primaryStage), 1180, 700);
-        scene.getStylesheets().add("Style.css");
-        primaryStage.setTitle("Instrument Recognition Software"); // Set the stage title
-        primaryStage.setScene(scene); // Place the scene in the stage
+        primaryStage.setScene(root); // Place the scene in the stage
         primaryStage.show(); // Display the stage�
     }
-
+/*
     private static double xOffset = 0;
     private static double yOffset = 0;
 
@@ -225,7 +226,7 @@ public class LoginScreen extends Application //implements Observer
         grid.add(message, 1, 5);
         GridPane.setHalignment(login, HPos.CENTER);
         return grid;
-    }
+    }*/
     public static void main(String[] args) 
     {
 

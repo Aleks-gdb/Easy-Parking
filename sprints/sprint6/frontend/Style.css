@@ -11,7 +11,7 @@
  }
 
  .button:hover{
-    -fx-background-color: grey; -fx-font-size: 15px;
+    -fx-background-color: orangered;
  }
 
 #hbox{
@@ -32,6 +32,8 @@
     -fx-pref-height: 10px;
     -fx-pref-width: 10px;
  }
+
+
 
  #prompt > Text{
     -fx-fill: orange;
