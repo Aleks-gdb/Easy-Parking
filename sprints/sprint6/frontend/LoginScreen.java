@@ -24,7 +24,7 @@ public class LoginScreen extends Application //implements Observer
         primaryStage.initStyle(StageStyle.UNDECORATED);
         
         primaryStage.setScene(root); // Place the scene in the stage
-        primaryStage.show(); // Display the stage�
+        primaryStage.show(); // Display the stage
     }
 /*
     private static double xOffset = 0;

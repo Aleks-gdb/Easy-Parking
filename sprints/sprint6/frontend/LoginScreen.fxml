@@ -6,13 +6,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Scene fx:id="mainStage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginScreenController">
-               <BorderPane minHeight="700.0" minWidth="1180.0">
+<Scene xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginScreenController">
+               <BorderPane fx:id="mainScene" minHeight="700.0" minWidth="1180.0" onMousePressed="#press" onMouseDragged="#drag">
                   <top>
                      <HBox alignment="TOP_RIGHT" prefHeight="14.0" prefWidth="1083.0" BorderPane.alignment="TOP_LEFT">
                         <children>
@@ -37,59 +39,67 @@
       <center>
          <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Label id="loginBackground" prefHeight="353.0" prefWidth="562.0" style="-fx-border-color: #ffb700; -fx-border-radius: 10;" stylesheets="@Style.css">
+               <Label id="loginBackground" prefHeight="406.0" prefWidth="611.0" style="-fx-border-color: c87b02; -fx-border-radius: 10;" stylesheets="@Style.css">
                   <StackPane.margin>
-                     <Insets bottom="120.0" />
+                     <Insets bottom="160.0" />
                   </StackPane.margin>
                </Label>
-                           <Label alignment="TOP_RIGHT" text="Instrument Recognition Software" textFill="#ffb700">
-                              <font>
-                                 <Font name="Arial Black" size="27.0" />
-                              </font>
-                  <StackPane.margin>
-                     <Insets bottom="400.0" />
-                  </StackPane.margin>
-                           </Label>
-                              <TextField fx:id="username" maxWidth="-Infinity" prefHeight="30.0" prefWidth="500.0" promptText="Username" stylesheets="@Style.css">
+                              <TextField fx:id="username" maxWidth="-Infinity" prefHeight="50.0" prefWidth="500.0" promptText="Username" stylesheets="@Style.css">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="18.0" />
                                  </font>
                   <StackPane.margin>
                      <Insets bottom="200.0" />
                   </StackPane.margin>
                               </TextField>
-                              <PasswordField fx:id="password" maxWidth="-Infinity" prefHeight="26.0" prefWidth="497.0" promptText="Password" stylesheets="@Style.css">
+                              <PasswordField fx:id="password" maxWidth="-Infinity" prefHeight="50.0" prefWidth="498.0" promptText="Password" stylesheets="@Style.css">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="18.0" />
                                  </font>
                   <StackPane.margin>
-                     <Insets />
+                     <Insets bottom="45.0" />
                   </StackPane.margin>
                               </PasswordField>
-                              <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onMouseClicked="#login" prefHeight="34.0" prefWidth="221.0" stylesheets="@Style.css" text="Log in" textAlignment="CENTER">
+                              <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onMouseClicked="#login" prefHeight="34.0" prefWidth="221.0" stylesheets="@Style.css" text="Log in" textAlignment="CENTER">
                                  <font>
-                                    <Font name="Arial Black" size="15.0" />
+                                    <Font name="Arial Black" size="18.0" />
                                  </font>
                   <StackPane.margin>
-                     <Insets top="150.0" />
+                     <Insets top="130.0" />
                   </StackPane.margin>
                               </Button>
-                           <Label alignment="CENTER" contentDisplay="CENTER" text="Don't have an account?" textFill="#ffb700">
+                           <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#register" prefHeight="26.0" prefWidth="123.0" stylesheets="@Style.css" text="Register!" textAlignment="CENTER">
                               <font>
-                                 <Font size="14.0" />
+                                 <Font name="Arial Black" size="18.0" />
+                              </font>
+                  <StackPane.margin>
+                     <Insets top="460.0" />
+                  </StackPane.margin>
+                           </Button>
+               <ImageView fitHeight="115.0" fitWidth="325.0" pickOnBounds="true">
+                  <StackPane.margin>
+                     <Insets bottom="430.0" />
+                  </StackPane.margin>
+                  <image>
+                     <Image url="@Logo.png" />
+                  </image>
+               </ImageView>
+                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="211.0" text="Don't have an account?" textFill="#c87b02">
+                              <font>
+                                 <Font name="Arial Black" size="15.0" />
                               </font>
                   <StackPane.margin>
                      <Insets top="400.0" />
                   </StackPane.margin>
                            </Label>
-                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#register" prefHeight="29.0" prefWidth="142.0" stylesheets="@Style.css" text="Register!" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Arial Black" size="15.0" />
-                              </font>
+               <Label fx:id="message" alignment="CENTER" prefHeight="24.0" prefWidth="372.0" text="" textAlignment="CENTER">
                   <StackPane.margin>
-                     <Insets top="450.0" />
+                     <Insets top="315.0" />
                   </StackPane.margin>
-                           </Button>
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+               </Label>
             </children>
          </StackPane>
       </center>
