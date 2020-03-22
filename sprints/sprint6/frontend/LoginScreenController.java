@@ -14,6 +14,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.*;
+import javafx.util.*;
+import javafx.fxml.FXMLLoader;
+import javafx.animation.FadeTransition;
 
 public class LoginScreenController{
     @FXML Button exitButton;
@@ -27,6 +30,8 @@ public class LoginScreenController{
     @FXML BorderPane mainScene;
     private static double xOffset = 0;
     private static double yOffset = 0;
+    static String usernameText;
+
     @FXML
     private void exit(MouseEvent event){
         event.consume();
@@ -61,10 +66,15 @@ public class LoginScreenController{
         ((Stage)mainScene.getScene().getWindow()).setX(event.getScreenX() + xOffset);
         ((Stage)mainScene.getScene().getWindow()).setY(event.getScreenY() + yOffset);
     }
+
+    public static String getUsername(){
+        return usernameText;
+    }
     @FXML
     private void login(MouseEvent event){
         event.consume();
-        if(username.getText().equals("")){
+        usernameText = username.getText();
+        if(usernameText.equals("")){
             message.setText("You must provide a username!");
             message.setTextFill(Color.rgb(210, 39, 30));
         }
@@ -73,15 +83,16 @@ public class LoginScreenController{
             message.setTextFill(Color.rgb(210, 39, 30));
         }
         else{
-            String user = username.getText() + " " + password.getText() + " login" ;
+            String user = usernameText + " " + password.getText() + " login" ;
             try{
             Connect validation = new Connect(user, true);
             if (validation.exists) {
                 message.setText("");
-                HomeScreen main = new HomeScreen();
                 //MLDemo main = new MLDemo();
                 try{
-                    main.start((Stage)loginButton.getScene().getWindow());}
+                    Scene root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+                    ((Stage)mainScene.getScene().getWindow()).setScene(root);
+                }
                 catch(Exception ex){
                     ex.printStackTrace();
                 }

@@ -81,3 +81,33 @@
       -fx-font-weight: bold;
 }
 
+.menu-button{
+    -fx-background-color: transparent;
+}
+
+.menu-button .label{
+    -fx-text-fill: #c87b02;
+}
+
+.menu-item .label {
+    -fx-text-fill: #c87b02;
+    -fx-text-size: 18px;
+}
+
+.menu-item:focused {
+    -fx-background-color: linear-gradient( black, darkorange);
+    -fx-text-size: 18px;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: black;
+}
+
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: black;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em; 
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;  
+}
