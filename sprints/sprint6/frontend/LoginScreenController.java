@@ -1,13 +1,11 @@
+//LoginScreenControls.java controller class for LoginScreen.fxml
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.image.ImageView;
+import javafx.fxml.*;
 import javafx.stage.*;
-import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.event.EventHandler;
 import javafx.scene.text.*; 
 import javafx.scene.layout.*;
@@ -15,8 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.*;
 import javafx.util.*;
-import javafx.fxml.FXMLLoader;
-import javafx.animation.FadeTransition;
 
 public class LoginScreenController{
     @FXML Button exitButton;
@@ -90,7 +86,7 @@ public class LoginScreenController{
                 message.setText("");
                 //MLDemo main = new MLDemo();
                 try{
-                    Scene root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+                    Scene root = FXMLLoader.load(getClass().getResource("./screens/HomeScreen.fxml"));
                     ((Stage)mainScene.getScene().getWindow()).setScene(root);
                 }
                 catch(Exception ex){

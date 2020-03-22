@@ -1,19 +1,18 @@
 //HomeScreenControls.java controller class for HomeScreen.fxml
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.SplitMenuButton;
+import javafx.fxml.*;
 import javafx.stage.*;
-import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.event.EventHandler;
 import javafx.scene.text.*; 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.image.*;
+import javafx.util.*;
 
 public class HomeScreenController{
     @FXML BorderPane mainScene;
@@ -63,7 +62,7 @@ public class HomeScreenController{
     private void logOut(ActionEvent event){
         event.consume();
         try{
-            Scene root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
+            Scene root = FXMLLoader.load(getClass().getResource("./screens/LoginScreen.fxml"));
             ((Stage)mainScene.getScene().getWindow()).setScene(root);
         }
         catch(Exception ex){
