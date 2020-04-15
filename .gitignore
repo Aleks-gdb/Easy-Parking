@@ -21,3 +21,6 @@ sprints/sprint3/backend/dist/Server.exe
 .vscode/settings.json
 sprints/sprint6/backend/ServerConnection.py
 sprints/sprint6/backend/__pycache__/ServerConnection.cpython-38.pyc
+sprints/sprint7/backend/ServerConnection.py
+sprints/sprint7/backend/__pycache__/ServerConnection.cpython-38.pyc
+
