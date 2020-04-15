@@ -28,6 +28,24 @@
                </ImageView>
                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                   <children>
+                     <MenuButton fx:id="userMenu11" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@Style.css" text="My Lists">
+                        <items>
+                           <MenuItem mnemonicParsing="false" text="Item1" />
+                           <MenuItem fx:id="logoutButton11" mnemonicParsing="false" onAction="#logOut" text="Item2" />
+                        </items>
+                        <font>
+                           <Font name="Arial Black" size="18.0" />
+                        </font>
+                     </MenuButton>
+                     <MenuButton fx:id="userMenu1" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@Style.css" text="My Genres">
+                        <items>
+                           <MenuItem mnemonicParsing="false" text="Item1" />
+                           <MenuItem fx:id="logoutButton1" mnemonicParsing="false" onAction="#logOut" text="Item2" />
+                        </items>
+                        <font>
+                           <Font name="Arial Black" size="18.0" />
+                        </font>
+                     </MenuButton>
                      <MenuButton fx:id="userMenu" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@Style.css" text="Aleks">
                        <items>
                          <MenuItem mnemonicParsing="false" text="Account" />
