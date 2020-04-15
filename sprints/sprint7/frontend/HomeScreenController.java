@@ -62,7 +62,7 @@ public class HomeScreenController{
     private void logOut(ActionEvent event){
         event.consume();
         try{
-            Scene root = FXMLLoader.load(getClass().getResource("./screens/LoginScreen.fxml"));
+            Scene root = FXMLLoader.load(getClass().getResource("screens/LoginScreen.fxml"));
             ((Stage)mainScene.getScene().getWindow()).setScene(root);
         }
         catch(Exception ex){

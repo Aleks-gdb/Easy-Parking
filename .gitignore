@@ -24,3 +24,5 @@ sprints/sprint6/backend/__pycache__/ServerConnection.cpython-38.pyc
 sprints/sprint7/backend/ServerConnection.py
 sprints/sprint7/backend/__pycache__/ServerConnection.cpython-38.pyc
 
+*.pyc
+sprints/sprint7/backend/build/Server/xref-Server.html

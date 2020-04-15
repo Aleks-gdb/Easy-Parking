@@ -86,7 +86,7 @@ public class LoginScreenController{
                 message.setText("");
                 //MLDemo main = new MLDemo();
                 try{
-                    Scene root = FXMLLoader.load(getClass().getResource("./screens/HomeScreen.fxml"));
+                    Scene root = FXMLLoader.load(getClass().getResource("screens/HomeScreen.fxml"));
                     ((Stage)mainScene.getScene().getWindow()).setScene(root);
                 }
                 catch(Exception ex){
