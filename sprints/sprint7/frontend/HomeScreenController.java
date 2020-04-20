@@ -1,4 +1,6 @@
 //HomeScreenControls.java controller class for HomeScreen.fxml
+import java.io.File;
+import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.stage.*;
@@ -13,12 +15,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.*;
 import javafx.util.*;
+import javafx.scene.media.*;
 
 public class HomeScreenController{
     @FXML BorderPane mainScene;
     @FXML MenuButton userMenu;
+    @FXML Button addFilesButton;
+    @FXML ListView fileListView;
     private static double xOffset = 0;
     private static double yOffset = 0;
+    private List<Media> songs;
+    //private List<String> songNames;
+    //public static final ObservableList songNames = new FXCollections.observableArrayList();
 
     @FXML
     public void initialize(){
@@ -69,4 +77,36 @@ public class HomeScreenController{
             ex.printStackTrace();            
         }
     }
+    @FXML
+    private void addFilesToList(MouseEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Add a song to your list");
+        Stage stage = new Stage();
+        List<File> list = fileChooser.showOpenMultipleDialog(stage);
+        if (list != null) {
+            for (File file : list) {
+                String filePath = file.getAbsolutePath();
+                String fileName = file.getName();
+                //String fileExtension = FilenameUtils.getExtension(filePath);
+                String fileExtension = fileName.substring(fileName.lastIndexOf("."));
+                if(fileExtension == "wav" || fileExtension == "mp3")
+                {
+                    Media song = new Media(filePath);
+                    songs.add(song);
+                    // songNames.add(fileName);
+                    // fileListView.setItems(songNames);
+                }
+                else
+                {
+                    //throw an error
+                }
+            }
+        }
+        
+    }
+    /*Playing songs:
+    Mediaplayer mediaPlayer = new MediaPlayer(song); song is a Media object
+    MediaPlayer.setAutoPlay(true);
+    https://www.javatpoint.com/media-with-javafx
+    */
 }
