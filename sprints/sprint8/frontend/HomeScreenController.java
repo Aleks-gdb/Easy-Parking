@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.image.*;
 import javafx.util.*;
 import javafx.scene.media.*;
+import javafx.collections.*;
 
 public class HomeScreenController{
     @FXML BorderPane mainScene;
@@ -24,10 +25,10 @@ public class HomeScreenController{
     @FXML ListView fileListView;
     private static double xOffset = 0;
     private static double yOffset = 0;
-    private List<Media> songs;
-    //private List<String> songNames;
+    //private List<Media> songs;
+    private Set<String> songs = new HashSet<String>();
     //public static final ObservableList songNames = new FXCollections.observableArrayList();
-
+    ObservableList<String> names = FXCollections.observableArrayList();
     @FXML
     public void initialize(){
         userMenu.setText(LoginScreenController.getUsername());
@@ -83,16 +84,22 @@ public class HomeScreenController{
         fileChooser.setTitle("Add a song to your list");
         Stage stage = new Stage();
         List<File> list = fileChooser.showOpenMultipleDialog(stage);
+        String fileName;
         if (list != null) {
             for (File file : list) {
-                String filePath = file.getAbsolutePath();
-                String fileName = file.getName();
+                //String filePath = file.getAbsolutePath();
+                fileName = file.getName();
                 //String fileExtension = FilenameUtils.getExtension(filePath);
                 String fileExtension = fileName.substring(fileName.lastIndexOf("."));
-                if(fileExtension == "wav" || fileExtension == "mp3")
+                //System.out.println(filePath);
+                //System.out.println(fileName);
+                if(fileExtension.equals(".wav") || fileExtension.equals(".mp3"))
                 {
-                    Media song = new Media(filePath);
-                    songs.add(song);
+                    //String path = filePath.replaceAll("\\\\", "/");
+                    //Media song = new Media("file:/" + path);
+                    //songs.add(song);
+                    //System.out.println(fileName);
+                    songs.add(fileName);
                     // songNames.add(fileName);
                     // fileListView.setItems(songNames);
                 }
@@ -101,6 +108,8 @@ public class HomeScreenController{
                     //throw an error
                 }
             }
+            names.setAll(songs);
+            fileListView.setItems(names);
         }
         
     }

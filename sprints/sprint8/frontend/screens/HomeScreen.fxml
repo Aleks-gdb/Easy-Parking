@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Scene xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeScreenController">
+<Scene xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="HomeScreenController">
                <BorderPane fx:id="mainScene" minHeight="700.0" minWidth="1180.0" onMouseDragged="#drag" onMousePressed="#press" stylesheets="@Style.css">
                   <top>
                      <HBox alignment="TOP_RIGHT" prefHeight="14.0" prefWidth="1083.0" BorderPane.alignment="TOP_LEFT">
