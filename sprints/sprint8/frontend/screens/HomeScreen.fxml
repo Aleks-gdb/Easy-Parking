@@ -139,7 +139,7 @@
                            <Insets right="30.0" />
                         </HBox.margin>
                      </Button>
-                     <Button fx:id="deleteFilesButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="184.0" text="Delete Files" />
+                     <Button fx:id="deleteFilesButton" mnemonicParsing="false" onMouseClicked="#deleteFilesFromList" prefHeight="36.0" prefWidth="184.0" text="Delete Files" />
                   </children>
                   <BorderPane.margin>
                      <Insets bottom="20.0" right="100.0" />

@@ -29,9 +29,11 @@ public class HomeScreenController{
     private Set<String> songs = new HashSet<String>();
     //public static final ObservableList songNames = new FXCollections.observableArrayList();
     ObservableList<String> names = FXCollections.observableArrayList();
+    ObservableList<String> toDelete;
     @FXML
     public void initialize(){
         userMenu.setText(LoginScreenController.getUsername());
+        fileListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
     @FXML
     private void exit(MouseEvent event){
@@ -112,6 +114,15 @@ public class HomeScreenController{
             fileListView.setItems(names);
         }
         
+    }
+    @FXML
+    private void deleteFilesFromList(MouseEvent event){
+        toDelete = fileListView.getSelectionModel().getSelectedItems();
+        toDelete.forEach((s) -> {
+            songs.remove(s);
+        });
+        names.setAll(songs);
+        fileListView.setItems(names);
     }
     /*Playing songs:
     Mediaplayer mediaPlayer = new MediaPlayer(song); song is a Media object
