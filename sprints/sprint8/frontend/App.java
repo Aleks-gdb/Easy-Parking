@@ -24,13 +24,13 @@ public class App extends Application //implements Observer
     }
     public static void main(String[] args) 
     {
-        try{
-        File server = new File("Server.exe");
-        Desktop.getDesktop().open(server);
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+        // try{
+        // File server = new File("Server.exe");
+        // Desktop.getDesktop().open(server);
+        // }catch(Exception e)
+        // {
+        //     e.printStackTrace();
+        // }
         Application.launch(args);
     }
     

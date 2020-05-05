@@ -134,6 +134,11 @@
             <bottom>
                <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
                   <children>
+                  <Button fx:id="getInstruments" mnemonicParsing="false" onMouseClicked="#getInstruments" prefHeight="36.0" prefWidth="184.0" text="Get Instruments">
+                        <HBox.margin>
+                           <Insets right="30.0" />
+                        </HBox.margin>
+                     </Button>
                      <Button fx:id="addFilesButton" mnemonicParsing="false" onMouseClicked="#addFilesToList" prefHeight="36.0" prefWidth="184.0" text="Add Files">
                         <HBox.margin>
                            <Insets right="30.0" />

@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['C:/Users/aleks/Documents/GitHub/Sound-Recognizer/sprints/sprint7/backend/Server.py'],
-             pathex=['C:\\Users\\aleks\\Documents\\GitHub\\Sound-Recognizer\\sprints\\sprint7\\backend'],
+a = Analysis(['C:/Users/aleks/Documents/GitHub/Sound-Recognizer/sprints/sprint8/backend/Server.py'],
+             pathex=['C:\\Users\\aleks\\Documents\\GitHub\\Sound-Recognizer\\sprints\\sprint8\\backend'],
              binaries=[],
              datas=[],
              hiddenimports=[],

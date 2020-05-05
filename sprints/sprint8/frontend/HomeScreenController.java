@@ -26,7 +26,9 @@ public class HomeScreenController{
     private static double xOffset = 0;
     private static double yOffset = 0;
     //private List<Media> songs;
-    private Set<String> songs = new HashSet<String>();
+    private List<String> songs = new ArrayList<String>();
+    private List<String> songsInstruments = new ArrayList<String>();
+    private List<String> filePaths = new ArrayList<String>();
     //public static final ObservableList songNames = new FXCollections.observableArrayList();
     ObservableList<String> names = FXCollections.observableArrayList();
     ObservableList<String> toDelete;
@@ -89,7 +91,7 @@ public class HomeScreenController{
         String fileName;
         if (list != null) {
             for (File file : list) {
-                //String filePath = file.getAbsolutePath();
+                String filePath = file.getAbsolutePath();
                 fileName = file.getName();
                 //String fileExtension = FilenameUtils.getExtension(filePath);
                 String fileExtension = fileName.substring(fileName.lastIndexOf("."));
@@ -101,7 +103,12 @@ public class HomeScreenController{
                     //Media song = new Media("file:/" + path);
                     //songs.add(song);
                     //System.out.println(fileName);
-                    songs.add(fileName);
+                    if(!songs.contains(fileName))
+                    {
+                        String path = filePath.replaceAll("\\\\", "/");
+                        filePaths.add(path);
+                        songs.add(fileName);
+                    }
                     // songNames.add(fileName);
                     // fileListView.setItems(songNames);
                 }
@@ -119,10 +126,37 @@ public class HomeScreenController{
     private void deleteFilesFromList(MouseEvent event){
         toDelete = fileListView.getSelectionModel().getSelectedItems();
         toDelete.forEach((s) -> {
-            songs.remove(s);
+            int index;
+            if(songs.contains(s))
+            {
+                index = songs.indexOf(s);
+                songs.remove(s);
+            }
+            else
+            {
+                index = songsInstruments.indexOf(s);
+                songsInstruments.remove(s);
+            }
+            filePaths.remove(index);
         });
         names.setAll(songs);
         fileListView.setItems(names);
+    }
+    @FXML
+    private void getInstruments(MouseEvent event){
+        event.consume();
+        //For some reason it does not work the second time for 4 songs
+        //NEEDS A FIX
+        try{
+        Connect con = new Connect(filePaths);
+        List<String> responses = con.getResponses();
+        for (int i = 0; i < responses.size() - 1; i++) {
+            songsInstruments.add(songs.get(i) + "      " + responses.get(i));
+            System.out.println("Response " + songsInstruments.get(i));
+        }
+        names.setAll(songsInstruments);
+        fileListView.setItems(names);
+        } catch(Exception e){ System.out.println("Something went wrong in HomeScreenController.getInstruments();"); };
     }
     /*Playing songs:
     Mediaplayer mediaPlayer = new MediaPlayer(song); song is a Media object
