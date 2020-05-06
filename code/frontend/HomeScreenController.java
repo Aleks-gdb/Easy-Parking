@@ -1,5 +1,5 @@
 //HomeScreenControls.java controller class for HomeScreen.fxml
-import java.io.File;
+import java.io.*;
 import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -22,6 +22,7 @@ public class HomeScreenController{
     @FXML BorderPane mainScene;
     @FXML MenuButton userMenu;
     @FXML Button addFilesButton;
+    @FXML Button getInstruments;
     @FXML ListView fileListView;
     private static double xOffset = 0;
     private static double yOffset = 0;
@@ -122,7 +123,7 @@ public class HomeScreenController{
         }
         
     }
-    @FXML
+    @FXML //NEEDS FIX
     private void deleteFilesFromList(MouseEvent event){
         toDelete = fileListView.getSelectionModel().getSelectedItems();
         toDelete.forEach((s) -> {
@@ -131,11 +132,13 @@ public class HomeScreenController{
             {
                 index = songs.indexOf(s);
                 songs.remove(s);
+                songsInstruments.remove(index);
             }
             else
             {
                 index = songsInstruments.indexOf(s);
                 songsInstruments.remove(s);
+                songs.remove(index);
             }
             filePaths.remove(index);
         });
@@ -145,18 +148,53 @@ public class HomeScreenController{
     @FXML
     private void getInstruments(MouseEvent event){
         event.consume();
-        //For some reason it does not work the second time for 4 songs
-        //NEEDS A FIX
         try{
         Connect con = new Connect(filePaths);
         List<String> responses = con.getResponses();
         for (int i = 0; i < responses.size() - 1; i++) {
-            songsInstruments.add(songs.get(i) + "      " + responses.get(i));
-            System.out.println("Response " + songsInstruments.get(i));
+            if(!songsInstruments.contains(songs.get(i) + "                              " + responses.get(i)))
+            songsInstruments.add(songs.get(i) + "                              " + responses.get(i));
         }
         names.setAll(songsInstruments);
         fileListView.setItems(names);
         } catch(Exception e){ System.out.println("Something went wrong in HomeScreenController.getInstruments();"); };
+    }
+    @FXML
+    private void getGraphs(MouseEvent event){
+        fileListView.getSelectionModel().getSelectedItems().forEach((g) -> {
+            int index;
+            if(songsInstruments.contains(g))
+            {
+                index = songsInstruments.indexOf(g);
+                String path = filePaths.get(index);
+                try{
+                    Image graph = new Image("file:///" + path.replace(".wav", ".jpg")); 
+                    ImageView graphView = new ImageView(graph);
+                    graphView.setFitHeight(400); 
+                    graphView.setFitWidth(1600); 
+                    StackPane root = new StackPane(graphView);
+                    Scene scene = new Scene(root);
+                    Stage showGraph = new Stage();
+                    showGraph.setTitle(songs.get(index));
+                    showGraph.setScene(scene);
+                    showGraph.show();
+                }catch(Exception e){e.printStackTrace();};
+            }
+        });
+    }
+    @FXML
+    private void playSong(MouseEvent event){
+        try{
+            String s = fileListView.getSelectionModel().getSelectedItem().toString();
+            int index = 0;
+            if(songs.contains(s))
+                index = songs.indexOf(s);
+            else if(songsInstruments.contains(s))
+                index = songsInstruments.indexOf(s);
+            Media sound = new Media("file:///" + filePaths.get(index));
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        }catch (Exception e){};
     }
     /*Playing songs:
     Mediaplayer mediaPlayer = new MediaPlayer(song); song is a Media object

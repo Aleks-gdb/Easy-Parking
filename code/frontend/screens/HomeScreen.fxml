@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Scene xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="HomeScreenController">
+<Scene xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="HomeScreenController">
                <BorderPane fx:id="mainScene" minHeight="700.0" minWidth="1180.0" onMouseDragged="#drag" onMousePressed="#press" stylesheets="@Style.css">
                   <top>
                      <HBox alignment="TOP_RIGHT" prefHeight="14.0" prefWidth="1083.0" BorderPane.alignment="TOP_LEFT">
@@ -92,7 +92,7 @@
             <top>
                <HBox prefHeight="32.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
-                     <Insets bottom="10.0" left="50.0" right="50.0" />
+                     <Insets bottom="10.0" left="50.0" right="100.0" />
                   </BorderPane.margin>
                   <children>
                      <StackPane prefHeight="32.0" prefWidth="261.0">
@@ -104,7 +104,7 @@
                            </Label>
                         </children>
                      </StackPane>
-                     <HBox prefHeight="32.0" prefWidth="653.0" HBox.hgrow="ALWAYS" />
+                     <HBox prefHeight="32.0" prefWidth="578.0" HBox.hgrow="ALWAYS" />
                      <StackPane prefHeight="150.0" prefWidth="200.0">
                         <children>
                            <MenuButton fx:id="sortByInstrumentMenu" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="39.0" prefWidth="238.0" stylesheets="@Style.css" text="Sort by instrument">
@@ -125,29 +125,39 @@
                <Insets top="10.0" />
             </BorderPane.margin>
             <center>
-               <ListView fx:id="fileListView" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <ListView fx:id="fileListView" editable="true" prefHeight="518.0" prefWidth="992.0" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
-                     <Insets bottom="15.0" left="100.0" right="50.0" />
+                     <Insets bottom="15.0" left="50.0" right="50.0" />
                   </BorderPane.margin>
                </ListView>
             </center>
             <bottom>
-               <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1030.0" BorderPane.alignment="CENTER">
+               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="1006.0" BorderPane.alignment="CENTER">
                   <children>
-                  <Button fx:id="getInstruments" mnemonicParsing="false" onMouseClicked="#getInstruments" prefHeight="36.0" prefWidth="184.0" text="Get Instruments">
+                  <Button fx:id="deleteFilesButton" mnemonicParsing="false" onMouseClicked="#deleteFilesFromList" prefHeight="36.0" prefWidth="170.0" text="Delete Files">
+                        <HBox.margin>
+                           <Insets right="30.0" />
+                        </HBox.margin>
+                  </Button>
+                  <Button fx:id="getGraphs" mnemonicParsing="false" onMouseClicked="#getGraphs" prefHeight="36.0" prefWidth="170.0" text="Get PSD Graphs">
                         <HBox.margin>
                            <Insets right="30.0" />
                         </HBox.margin>
                      </Button>
-                     <Button fx:id="addFilesButton" mnemonicParsing="false" onMouseClicked="#addFilesToList" prefHeight="36.0" prefWidth="184.0" text="Add Files">
+                  <Button fx:id="getInstruments" mnemonicParsing="false" onMouseClicked="#getInstruments" prefHeight="36.0" prefWidth="170.0" text="Get Instruments">
                         <HBox.margin>
                            <Insets right="30.0" />
                         </HBox.margin>
                      </Button>
-                     <Button fx:id="deleteFilesButton" mnemonicParsing="false" onMouseClicked="#deleteFilesFromList" prefHeight="36.0" prefWidth="184.0" text="Delete Files" />
+                     <Button fx:id="addFilesButton" mnemonicParsing="false" onMouseClicked="#addFilesToList" prefHeight="36.0" prefWidth="170.0" text="Add Files">
+                        <HBox.margin>
+                           <Insets right="30.0" />
+                        </HBox.margin>
+                     </Button>
+                     <Button fx:id="playSong" mnemonicParsing="false" onMouseClicked="#playSong" prefHeight="36.0" prefWidth="170.0" text="Play!" />
                   </children>
                   <BorderPane.margin>
-                     <Insets bottom="20.0" right="100.0" />
+                     <Insets bottom="20.0" />
                   </BorderPane.margin>
                </HBox>
             </bottom>
