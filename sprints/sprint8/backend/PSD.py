@@ -3,10 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from scipy.fftpack import fft # fourier transform
-
-plt.figure(figsize=(20, 5))
+import evaluateGraph
 
 def convertAndClassify(path):
+    if path == "done":
+        return "done"
+    plt.figure(figsize=(20, 5))
     fs, Audiodata = wavfile.read(path)
     #tittle for the graph will be the name of the file.
     plt.title(path,size=16)
@@ -30,6 +32,6 @@ def convertAndClassify(path):
     plt.plot(freqAxis/1000.0, 10*np.log10(MagFreq)) #Power spectrum
     plt.title(path)
     plt.xlabel('Frequency (kHz)'); plt.ylabel('Power spectrum (dB)')
-    plt.savefig(path.rstrip(".wav") + '.png')
-    plt.clf()
-    return 'converted'
+    plt.savefig(path.rstrip(".wav") + '.jpg')
+    prediction = evaluateGraph.evaluateGraph(path.rstrip(".wav") + '.jpg')
+    return prediction
