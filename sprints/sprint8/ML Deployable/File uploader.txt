@@ -1,0 +1,3 @@
+from google.colab import files
+from IPython.display import Image
+upload = files.upload()
