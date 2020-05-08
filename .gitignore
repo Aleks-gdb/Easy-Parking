@@ -30,3 +30,4 @@ sprints/sprint8/backend/ServerConnection.py
 code/backend/ServerConnection.py
 code/server/ServerConnection.py
 sprints/sprint8/backend/finalized_model.sav
+*.sav
