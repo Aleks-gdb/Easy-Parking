@@ -1,15 +1,8 @@
 import joblib
 import numpy as np
 from PIL import Image
-import _pickle as pickle
-from keras.utils import to_categorical
 
-CATEGORIES = ["Guitar","Trumpet", "Violin"]
-
-# X_test = pickle.load(open("X_test.pickle","rb"))
-# y_test = pickle.load(open("y_test.pickle","rb"))
-# X_test = np.array(X_test)
-# y_test_bin = to_categorical(y_test)
+CATEGORIES = ["Flute", "Guitar", "Saxophone", "Trumpet", "Tuba", "Violin"]
 
 def preprocess(img):
   pil_im = Image.open(img)
@@ -26,17 +19,18 @@ def evaluateGraph(img):
   img_arr = preprocess(img)
   img_arr = np.array(img_arr).reshape((1,360,1440,1))
 
-  #load the trained model
-  loaded_model = joblib.load('finalized_model.sav')
 
+
+  #load the trained model
+  #ADD FULL FILE PATH
+  loaded_model = joblib.load('finalized_model(3).sav') #ADD FULL FILE PATH
+  #ADD FULL FILE PATH
+
+
+  
   #tests the model against an individual graph
   scores = loaded_model.predict(img_arr)
   max = 0
-
-  print(X_test[0].shape)
-
-  test_results = loaded_model.evaluate(X_test, y_test_bin, verbose=1)
-  print(f'Test results - Loss: {test_results[0]} - Accuracy: {test_results[1]*100}%')
 
   print(scores)
 

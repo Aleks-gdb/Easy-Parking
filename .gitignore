@@ -30,3 +30,4 @@ sprints/sprint8/backend/ServerConnection.py
 *.class
 code/backend/ServerConnection.py
 *.sav
+code/server/ServerConnection.py
