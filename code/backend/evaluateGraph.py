@@ -1,6 +1,7 @@
 import joblib
 import numpy as np
 from PIL import Image
+import os
 
 CATEGORIES = ["Flute", "Guitar", "Saxophone", "Trumpet", "Tuba", "Violin"]
 
@@ -19,13 +20,10 @@ def evaluateGraph(img):
   img_arr = preprocess(img)
   img_arr = np.array(img_arr).reshape((1,360,1440,1))
 
-
-
   #load the trained model
   #ADD FULL FILE PATH
-  loaded_model = joblib.load('finalized_model(3).sav') #ADD FULL FILE PATH
+  loaded_model = joblib.load(os.path.abspath('finalized_model.sav')) #ADD FULL FILE PATH
   #ADD FULL FILE PATH
-
 
   
   #tests the model against an individual graph
