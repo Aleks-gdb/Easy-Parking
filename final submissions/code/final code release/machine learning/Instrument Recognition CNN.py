@@ -1,3 +1,6 @@
+#Runs the training of the Machine Learning model. This is done once on a host computer and
+#the .sav file generated is then uploaded and referenced by the server to predict all future graphs.
+
 #Imports the necessary libraries
 import tensorflow as tf
 from keras.models import Sequential
