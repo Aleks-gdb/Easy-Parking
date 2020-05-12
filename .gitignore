@@ -1,7 +1,5 @@
-
 sprints/sprint2/backend
 sprints/sprint3/backend/__pycache__
-Connect.java
 *.class
 *.toc
 *.zip
@@ -23,7 +21,20 @@ sprints/sprint7/backend/__pycache__/ServerConnection.cpython-38.pyc
 
 *.pyc
 sprints/sprint7/backend/build/Server/xref-Server.html
-ServerConnection.py
 sprints/sprint8/backend/finalized_model.sav
 *.sav
 
+code/backend/ServerConnection.py
+code/frontend/Connect.java
+code/server/ServerConnection.py
+final submissions/code/5 code release history/2.26.20_release/frontend/Connect.java
+final submissions/code/5 code release history/3.23.20_release/frontend/Connect.java
+final submissions/code/5 code release history/4.13.20_release/frontend/Connect.java
+final submissions/code/5 code release history/4.29.20_release/frontend/Connect.java
+sprints/sprint3/frontend/Connect.java
+sprints/sprint5/backend/ServerConnection.py
+sprints/sprint5/frontend/Connect.java
+sprints/sprint6/frontend/Connect.java
+sprints/sprint7/frontend/Connect.java
+sprints/sprint8/backend/ServerConnection.py
+sprints/sprint8/frontend/Connect.java
