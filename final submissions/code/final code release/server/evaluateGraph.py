@@ -5,6 +5,8 @@ import os
 
 CATEGORIES = ["Flute", "Guitar", "Saxophone", "Trumpet", "Tuba", "Violin"]
 
+#function to preprocess user input data to 
+# match data the model was trained on
 def preprocess(img):
   pil_im = Image.open(img)
   gray_im = pil_im.convert('LA')
@@ -20,14 +22,11 @@ def evaluateGraph(img):
   img_arr = preprocess(img)
   img_arr = np.array(img_arr).reshape((1,360,1440,1))
 
-  #load the trained model
-  #ADD FULL FILE PATH
-  loaded_model = joblib.load(os.path.abspath('finalized_model.sav')) #ADD FULL FILE PATH
-  #ADD FULL FILE PATH
+  #load the already trained saved model
+  loaded_model = joblib.load(os.path.abspath('finalized_model.sav'))
 
-  
   #tests the model against an individual graph
-  scores = loaded_model.predict(img_arr)
+  scores = loaded_model.predict(img_arr) #based on user input predict the instrument
   max = 0
 
   print(scores)
