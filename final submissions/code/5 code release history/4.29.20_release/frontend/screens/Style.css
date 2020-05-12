@@ -1,0 +1,113 @@
+
+.root{
+    -fx-background-color: black;
+ }
+ 
+ .button{
+    /* -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0.0, 0, 1); */
+    -fx-background-radius: 30, 30, 29, 28;
+    -fx-padding: 3px 10px 3px 10px;
+    -fx-background-color: linear-gradient(#c87b02, orangered);
+ }
+
+ .button:hover{
+    -fx-background-color: orangered;
+ }
+
+#hbox{
+    -fx-border-color: #c87b02;
+    -fx-border-width: 0 0 1 0;
+}
+
+#logo{
+    -fx-fill: #c87b02;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+ #windowNav{
+    -fx-background-color: transparent;
+    -fx-border-color: #c87b02;
+    -fx-text-fill: #c87b02;
+    -fx-pref-height: 10px;
+    -fx-pref-width: 10px;
+ }
+
+ #prompt > Text{
+    -fx-fill: #c87b02;
+ }
+
+ .hyperlink{
+    -fx-fill: #c87b02;
+ }
+
+ #text{
+    -fx-stroke: #c87b02;
+ }
+
+ .text-field {
+    -fx-background-color: #c87b02 , black , black;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+}
+ .text-input {
+     -fx-text-fill: #c87b02;
+ }
+
+ .text-field:focused {
+    -fx-background-color: #c87b02 , #404040 , #404040;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 -1 5 -1;
+ }
+
+  .combo-box{
+      -fx-background-color: #FEF896;
+  }
+
+  .combo-box-popup .list-view {
+      -fx-background-color: #FEF896;
+  }
+
+  .combo-box-popup .list-view .list-cell {
+      -fx-background-color: #FEF896;
+  }
+
+  .combo-box-popup .list-view .list-cell:hover{
+      -fx-background-color: #E5D06B;
+      -fx-text-fill: black;
+  }
+
+  .combo-box-popup .list-view .list-cell:filled:selected{
+      -fx-background-color: #E5D06B;
+      -fx-text-fill: black;
+      -fx-font-weight: bold;
+}
+
+.menu-button{
+    -fx-background-color: transparent;
+}
+
+.menu-button .label{
+    -fx-text-fill: #c87b02;
+}
+
+.menu-item .label {
+    -fx-text-fill: #c87b02;
+    -fx-text-size: 18px;
+}
+
+.menu-item:focused {
+    -fx-background-color: linear-gradient( black, darkorange);
+    -fx-text-size: 18px;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: black;
+}
+
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: black;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em; 
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;  
+}
