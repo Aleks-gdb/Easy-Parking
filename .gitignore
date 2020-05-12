@@ -1,9 +1,6 @@
 
 sprints/sprint2/backend
-sprints/sprint3/backend/ServerConnection.py
 sprints/sprint3/backend/__pycache__
-sprints/sprint5/backend/ServerConnection.py
-sprints/sprint5/frontend/Connect.java
 Connect.java
 *.class
 *.toc
@@ -26,9 +23,7 @@ sprints/sprint7/backend/__pycache__/ServerConnection.cpython-38.pyc
 
 *.pyc
 sprints/sprint7/backend/build/Server/xref-Server.html
-sprints/sprint8/backend/ServerConnection.py
-code/backend/ServerConnection.py
-./ServerConnection.py
+ServerConnection.py
 sprints/sprint8/backend/finalized_model.sav
 *.sav
-code/server/ServerConnection.py
+
