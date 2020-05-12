@@ -26,11 +26,8 @@ def evaluateGraph(img):
   img_arr = np.array(img_arr).reshape((1,360,1440,1))
 
   #load the trained model
-  #ADD FULL FILE PATH
-  loaded_model = joblib.load(os.path.abspath('finalized_model.sav')) #ADD FULL FILE PATH
-  #ADD FULL FILE PATH
+  loaded_model = joblib.load(os.path.abspath('finalized_model.sav'))
 
-  
   #tests the model against an individual graph
   scores = loaded_model.predict(img_arr)
   max = 0
